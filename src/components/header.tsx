@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Image,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -22,6 +23,7 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
+import logonovo from "../../public/logonovo.png";
 
 const Header = () => {
   const router = useRouter();
@@ -29,6 +31,9 @@ const Header = () => {
   return (
     <Box>
       <Flex
+        position="fixed"
+        w="100%"
+        zIndex={1}
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
@@ -40,13 +45,11 @@ const Header = () => {
         align={"center"}
       >
         <Flex
-        
           flex={{ base: 1, md: "auto" }}
           ml={{ base: -2 }}
           display={{ base: "flex", md: "none" }}
         >
           <IconButton
-          
             onClick={onToggle}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
@@ -55,13 +58,46 @@ const Header = () => {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 2 }} justify={{ base: "center", md: "center" }} >
-          
-
+        <Image
+          boxSize="50px"
+          objectFit="cover"
+          src="https://seeklogo.com/images/A/Advocacia-logo-432DC96626-seeklogo.com.png"
+          alt="Logotipo"
+        />
+        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "center" }}>
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
+
+        <Stack
+          flex={{ base: 1, md: 0 }}
+          justify={"flex-end"}
+          direction={"row"}
+          spacing={6}
+        >
+          <Button
+            as={"a"}
+            fontSize={"sm"}
+            fontWeight={400}
+            variant={"link"}
+            href={"#"}
+          >
+            Sign In
+          </Button>
+          <Button
+            display={{ base: "none", md: "inline-flex" }}
+            fontSize={"sm"}
+            fontWeight={600}
+            color={"white"}
+            bg={"pink.400"}
+            _hover={{
+              bg: "pink.300",
+            }}
+          >
+            Sign Up
+          </Button>
+        </Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -77,8 +113,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4} justifyContent={"center"}
-    display={"flex"}>
+    <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -161,6 +196,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 const MobileNav = () => {
   return (
     <Stack
+    mt={20}
       bg={useColorModeValue("white", "gray.800")}
       p={4}
       display={{ md: "none" }}
@@ -235,15 +271,15 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Home",
-    href: "#",
+    href: "#home",
   },
   {
     label: "About Us",
-    href: "#",
+    href: "#aboutus",
   },
   {
     label: "Testimonials",
-    href: "#",
+    href: "#testimonials",
   },
 ];
 
