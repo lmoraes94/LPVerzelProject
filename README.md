@@ -1,6 +1,15 @@
 ## Getting Started
 
-First, run the development server:
+First, run command:
+npm install
+
+# or
+
+yarn install
+
+to install the project dependencies
+
+and run the development server:
 
 npm run dev
 
