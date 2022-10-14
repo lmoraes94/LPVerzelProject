@@ -59,9 +59,8 @@ const Header = () => {
           />
         </Flex>
         <Image
-          boxSize="50px"
           objectFit="cover"
-          src="https://seeklogo.com/images/A/Advocacia-logo-432DC96626-seeklogo.com.png"
+          src={"/static/images/logo.svg"}
           alt="Logotipo"
         />
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "center" }}>
@@ -69,35 +68,6 @@ const Header = () => {
             <DesktopNav />
           </Flex>
         </Flex>
-
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
-        >
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"#"}
-          >
-            Sign In
-          </Button>
-          <Button
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"pink.400"}
-            _hover={{
-              bg: "pink.300",
-            }}
-          >
-            Sign Up
-          </Button>
-        </Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -196,7 +166,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 const MobileNav = () => {
   return (
     <Stack
-    mt={20}
+      mt={20}
       bg={useColorModeValue("white", "gray.800")}
       p={4}
       display={{ md: "none" }}
@@ -274,12 +244,8 @@ const NAV_ITEMS: Array<NavItem> = [
     href: "#home",
   },
   {
-    label: "About Us",
+    label: "Catálogo de carros",
     href: "#aboutus",
-  },
-  {
-    label: "Testimonials",
-    href: "#testimonials",
   },
 ];
 
